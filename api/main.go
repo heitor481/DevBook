@@ -1,15 +1,18 @@
 package main
 
 import (
+	"api/src/config"
 	"api/src/router"
+	"fmt"
 	"log"
 	"net/http"
 )
 
 func main() {
-	println("Enter point")
+	config.Charge()
 
+	fmt.Print(config.ConnectionString)
 	router := router.GenerateRouter()
 
-	log.Fatal(http.ListenAndServe(":5000", router))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Port), router))
 }
