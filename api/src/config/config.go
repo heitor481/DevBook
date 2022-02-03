@@ -27,8 +27,12 @@ func Charge() {
 	if erro != nil {
 		Port = 9000
 	}
+	//postgres: //postgres:@localhost:5432/test?sslmode=disable
 
-	ConnectionString = fmt.Sprintf("server=%s;user id=AVELL;database=%s",
+	ConnectionString = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		os.Getenv("DB_SERVER"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_USERNAME"),
+		os.Getenv("DB_PASSWORD"),
 		os.Getenv("DB_NAME"))
 }

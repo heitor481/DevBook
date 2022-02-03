@@ -4,12 +4,12 @@ import (
 	"api/src/config"
 	"database/sql"
 
-	_ "github.com/denisenkom/go-mssqldb" //DRiVER
+	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
 //Connect connecto to a database and return
 func Connect() (*sql.DB, error) {
-	db, erro := sql.Open("sqlserver", config.ConnectionString)
+	db, erro := sql.Open("pgx", config.ConnectionString)
 	if erro != nil {
 		return nil, erro
 	}
